@@ -1,6 +1,6 @@
 describe("Appointments", () => {
   beforeEach(() => {
-    cy.request("POST", "/api/debug/reset");
+    cy.request("GET", "http://localhost:8001/api/debug/reset");
 
     cy.visit("/");
 
@@ -8,6 +8,7 @@ describe("Appointments", () => {
   });
 
   it("should book an interview", () => {
+    //cy.request("GET", "/api/debug/reset");
     cy.get("[alt=Add]")
       .first()
       .click();
@@ -22,6 +23,7 @@ describe("Appointments", () => {
   });
 
   it("should edit an interview", () => {
+    cy.request("GET", "/api/debug/reset");
     cy.get("[alt=Edit]")
       .first()
       .click({ force: true });
@@ -38,6 +40,7 @@ describe("Appointments", () => {
   });
 
   it("should cancel an interview", () => {
+    cy.request("GET", "/api/debug/reset");
     cy.get("[alt=Delete]")
       .first()
       .click({ force: true });
